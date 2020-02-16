@@ -1,4 +1,5 @@
 import argparse
+from pageBuilder import Build
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
 class S(BaseHTTPRequestHandler):
@@ -49,6 +50,8 @@ class S(BaseHTTPRequestHandler):
             self.sendFile("pingPage.html")
         elif arg[0] == "css":
             self.sendCss()
+        elif arg[0] in ["home", "xkcd", "tools", "sm"]:
+            self.send(Build(arg[0]))
         else:
             print("unknown arg")
             self.html("404")
