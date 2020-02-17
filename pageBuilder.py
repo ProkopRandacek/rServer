@@ -1,3 +1,4 @@
+import markdown2
 htmlStart = """
 <!doctype html>
 <html>
@@ -26,10 +27,8 @@ navbarItemPrePosSeparator = "\">"
 navbarItemPos = "</a></span>"
 navbarPos = "</div>"
 
-contentPre = "<p>"
-contentPos = "</p></div>"
-
 footer = """
+</div>
 <div class="footer">
 <a href="https://github.com/ProkopRandacek/randacek.dev">source</a>
 </div>
@@ -38,7 +37,9 @@ footer = """
 
 def Build(ID):
     ID = navbarPaths.index(ID)
-    html = htmlStart + navbarNames[ID] + htmlHeader + navbarPre
+    html = htmlStart + navbarNames[ID] + htmlHeader
+
+    html += navbarPre
     for i in range(len(navbarNames)):
         html += navbarCurrentItemPre if i == ID else navbarItemPre
         html += navbarPaths[i]
@@ -47,8 +48,10 @@ def Build(ID):
         html += navbarItemPos
         html += "" if i == len(navbarNames) - 1 else navbarSeparator
     html += navbarPos
-    html += contentPre
-    html += "test generated lol"
-    html += contentPos
+
+    content = markdown2.markdown(open(navbarPaths[ID] + ".md", 'r').read())
+    html += content
+    print(content)
+
     html += footer
     return html
