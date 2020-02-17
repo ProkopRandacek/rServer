@@ -33,7 +33,7 @@ navbarPos = "</div>"
 footer = """
 </div>
 <div class="footer">
-<a href="https://github.com/ProkopRandacek/randacek.dev">source</a>
+made by me. <a href="https://github.com/ProkopRandacek/randacek.dev">source</a>
 </div>
 </body>
 </html>"""

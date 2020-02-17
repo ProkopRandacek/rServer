@@ -33,8 +33,10 @@ a {
     text-align: center;
 }
 
+
 .navbar .current a {
     color: #ff7315;
+    text-decoration: none;
 }
 
 .content {
@@ -45,8 +47,9 @@ a {
 
 .footer {
     text-align: center;
-}
-
-.footer a {
+    padding-bottom: 5px;
     font-size: 70%;
+}
+.footer a {
+    text-decoration: underline;
 }
