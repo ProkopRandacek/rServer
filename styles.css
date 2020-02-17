@@ -1,3 +1,8 @@
+* {
+    font-family: "Courier New";
+    color: #eeeeee;
+}
+
 body {
     margin: 0px;
     background-color: #222831;
@@ -7,6 +12,10 @@ h1 {
     margin-top: 0px;
     margin-bottom: 5px;
     padding-top: 20px;
+}
+
+a {
+    text-decoration: none;
 }
 
 .textik {
@@ -22,10 +31,6 @@ h1 {
 
 .navbar {
     text-align: center;
-}
-
-.navbar a {
-    text-decoration: none;
 }
 
 .navbar .current a {
@@ -44,10 +49,4 @@ h1 {
 
 .footer a {
     font-size: 70%;
-    text-decoration: none;
-}
-
-* {
-    font-family: "Courier New";
-    color: #eeeeee;
 }
