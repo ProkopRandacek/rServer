@@ -20,8 +20,8 @@ htmlHeader = """
 </div>
 <div class="content">"""
 
-navbarNames = ["Home", "My fav xkcd", "Tools", "Social Media", "404"]
-navbarPaths = ["home", "xkcd",        "tools", "sm",           "404"]
+navbarNames = ["Home", "My fav xkcd", "Tools", "Contact", "404"]
+navbarPaths = ["home", "xkcd",        "tools", "contact", "404"]
 navbarPre = "<div class=\"navbar\">"
 navbarSeparator = "<span> | </span>"
 navbarCurrentItemPre = "<span class=\"current\"><a href=\""

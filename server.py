@@ -33,7 +33,7 @@ class S(BaseHTTPRequestHandler):
         print("[" + str(datetime.datetime.now()) + "]", "GET request -", ":".join(map(str, self.client_address)), "- arg:", arg)
         if arg[0] == "":
             self.send(Build("home"))
-        elif arg[0] in ["home", "xkcd", "tools", "sm"]:
+        elif arg[0] in ["home", "xkcd", "tools", "contact"]:
             self.send(Build(arg[0]))
         elif arg[0] == "css":
             self.sendCss()

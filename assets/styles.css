@@ -14,7 +14,7 @@ h1 {
     padding-top: 20px;
 }
 
-a {
+li a {
     text-decoration: none;
 }
 
@@ -33,6 +33,9 @@ a {
     text-align: center;
 }
 
+.navbar a {
+    text-decoration: none;
+}
 
 .navbar .current a {
     color: #ff7315;
