@@ -37,12 +37,12 @@ class S(BaseHTTPRequestHandler):
             self.send(Build(arg[0]))
         elif arg[0] == "css":
             self.sendCss()
-        elif arg[0] == "ico":
+        elif arg[0] in ["ico", "favicon.ico"]:
             self.sendIco()
         else:
             self.send(Build("404"))
 
-server_address = ("localhost", 8000)
+server_address = ("192.168.0.173", 8000)
 httpd = HTTPServer(server_address, S)
 
 print(f"Starting server")

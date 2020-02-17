@@ -1,3 +1,5 @@
+This is a list of my favorite [xkcd](https://xkcd.com) comics.
+******
 - [44 - Love](https://xkcd.com/44)
 - [58 - Why Do You Love Me?](https://xkcd.com/58)
 - [70 - Guitar Hero](https://xkcd.com/70)
