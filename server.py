@@ -42,7 +42,7 @@ class S(BaseHTTPRequestHandler):
         else:
             self.send(Build("404"))
 
-server_address = ("192.168.0.173", 8000)
+server_address = ("localhost", 8000)
 httpd = HTTPServer(server_address, S)
 
 print(f"Starting server")
