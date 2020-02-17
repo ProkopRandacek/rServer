@@ -43,13 +43,13 @@ def Build(ID):
     html = htmlStart + navbarNames[ID] + htmlHeader
 
     html += navbarPre
-    for i in range(len(navbarNames)):
+    for i in range(len(navbarNames[:-1])):
         html += navbarCurrentItemPre if i == ID else navbarItemPre
         html += navbarPaths[i]
         html += navbarItemPrePosSeparator
         html += navbarNames[i]
         html += navbarItemPos
-        html += "" if i == len(navbarNames) - 1 else navbarSeparator
+        html += "" if i == len(navbarNames) - 2 else navbarSeparator
     html += navbarPos
 
     html += markdown2.markdown(open("assets/content/" + navbarPaths[ID] + ".md", 'r').read())
