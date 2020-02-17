@@ -1,4 +1,5 @@
 import markdown2
+
 htmlStart = """
 <!doctype html>
 <html>
@@ -7,6 +8,7 @@ htmlStart = """
 htmlHeader = """
 </title>
 <link rel="stylesheet" href="css">
+<link rel="icon" type="image/png" href="ico">
 <meta charset="utf-8">
 <meta name="author" content="Prokop Randáček">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,8 +19,9 @@ htmlHeader = """
 <p class="textik">Prokop Randáček's web.</p>
 </div>
 <div class="content">"""
-navbarNames = ["Home", "My fav xkcd", "Tools", "Social Media"]
-navbarPaths = ["home", "xkcd",        "tools", "sm"]
+
+navbarNames = ["Home", "My fav xkcd", "Tools", "Social Media", "404"]
+navbarPaths = ["home", "xkcd",        "tools", "sm",           "404"]
 navbarPre = "<div class=\"navbar\">"
 navbarSeparator = "<span> | </span>"
 navbarCurrentItemPre = "<span class=\"current\"><a href=\""
@@ -49,9 +52,7 @@ def Build(ID):
         html += "" if i == len(navbarNames) - 1 else navbarSeparator
     html += navbarPos
 
-    content = markdown2.markdown(open(navbarPaths[ID] + ".md", 'r').read())
-    html += content
-    print(content)
+    html += markdown2.markdown(open("assets/content/" + navbarPaths[ID] + ".md", 'r').read())
 
     html += footer
     return html

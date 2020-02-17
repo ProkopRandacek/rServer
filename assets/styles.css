@@ -1,0 +1,52 @@
+* {
+    font-family: "Courier New";
+    color: #eeeeee;
+}
+
+body {
+    margin: 0px;
+    background-color: #222831;
+}
+
+h1 {
+    margin-top: 0px;
+    margin-bottom: 5px;
+    padding-top: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.textik {
+    margin: 0px;
+    padding-bottom: 10px;
+}
+
+.header {
+    text-align: center;
+    background-color: #393e46;
+    margin: 0px;
+}
+
+.navbar {
+    text-align: center;
+}
+
+.navbar .current a {
+    color: #ff7315;
+}
+
+.content {
+    max-width: 700px;
+    margin: auto;
+    padding: 20px;
+}
+
+.footer {
+    text-align: center;
+}
+
+.footer a {
+    font-size: 70%;
+}
