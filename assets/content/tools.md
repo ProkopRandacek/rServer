@@ -14,5 +14,3 @@ This is a list of software I use and think it is worth of sharing.
   - [Firefox](https://www.mozilla.org/en-US/firefox/browsers/) - It has got nicer page inspector than Chrome
   - [Tree Style Tab](https://github.com/piroor/treestyletab) - Sorts tabs into trees on right of the browser. Absolute necessary extension for browsing the web.
   - [Duck duck go](https://ddg.gg/) - It has got darkmode! Why isn't everyone using this?
-  
--

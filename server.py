@@ -22,6 +22,12 @@ class S(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(open("assets/favicon.jpeg", "rb").read())
 
+    def sendImg(self, path):
+        self.send_response(200)
+        self.send_header("Content-type", "image/png")
+        self.end_headers()
+        self.wfile.write(open(path, "rb").read())
+
     def send(self, message):
         self.send_response(200)
         self.send_header("Content-type", "text/html")
@@ -39,6 +45,8 @@ class S(BaseHTTPRequestHandler):
             self.sendCss()
         elif arg[0] in ["ico", "favicon.ico"]:
             self.sendIco()
+        elif arg[0] == "setup":
+            self.sendImg("assets/setup.png")
         else:
             self.send(Build("404"))
 
