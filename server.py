@@ -1,5 +1,5 @@
 import datetime
-from pageBuilder import Build
+import markdown2
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
 class S(BaseHTTPRequestHandler):
@@ -18,9 +18,9 @@ class S(BaseHTTPRequestHandler):
 
     def sendIco(self):
         self.send_response(200)
-        self.send_header("Content-type", "image/png")
+        self.send_header("Content-type", "image/jpeg")
         self.end_headers()
-        self.wfile.write(open("assets/favicon.png", "rb").read())
+        self.wfile.write(open("assets/favicon.jpeg", "rb").read())
 
     def send(self, message):
         self.send_response(200)
@@ -42,8 +42,35 @@ class S(BaseHTTPRequestHandler):
         else:
             self.send(Build("404"))
 
+navbarNames = ["Home", "My fav xkcd", "Tools", "Contact"]
+navbarPaths = ["home", "xkcd",        "tools", "contact"]
+template = open("assets/template.html", 'r').read()
+
+def Build(path):
+    html = template
+
+    navbar = ""
+    navbarNum = navbarPaths.index(path) if path in navbarPaths else -1
+    for i in range(len(navbarNames)):
+        navbar += "<span"
+        navbar += " class=\"current\"" if i == navbarNum else ""
+        navbar += "><a href=\""
+        navbar += navbarPaths[i]
+        navbar += "\">"
+        navbar += navbarNames[i]
+        navbar += "</a></span>"
+        navbar += "" if i == len(navbarNames) - 1 else "<span> | </span>"
+
+    content = markdown2.markdown(open("assets/content/" + path + ".md", 'r').read())
+
+    title = navbarNames[navbarNum] if not navbarNum == -1 else path
+    
+    html = html.replace("*title*", title).replace("*navbar*", navbar).replace("*content*", content)
+
+    return html
+
 server_address = ("localhost", 8000)
 httpd = HTTPServer(server_address, S)
 
-print(f"Starting server")
 httpd.serve_forever()
+print("Server started")
