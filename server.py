@@ -39,7 +39,7 @@ class S(BaseHTTPRequestHandler):
         print("[" + str(datetime.datetime.now()) + "]", "GET request -", ":".join(map(str, self.client_address)), "- arg:", arg)
         if arg[0] == "":
             self.send(Build("home"))
-        elif arg[0] in ["home", "xkcd", "tools", "contact"]:
+        elif arg[0] in navbarPaths:
             self.send(Build(arg[0]))
         elif arg[0] == "css":
             self.sendCss()
@@ -50,8 +50,8 @@ class S(BaseHTTPRequestHandler):
         else:
             self.send(Build("404"))
 
-navbarNames = ["Home", "My fav xkcd", "Tools", "Contact"]
-navbarPaths = ["home", "xkcd",        "tools", "contact"]
+navbarNames = ["Home", "My fav xkcd", "Tools", "Contact", "Portfolio", "Log"]
+navbarPaths = ["home", "xkcd",        "tools", "contact", "portfolio", "log"]
 template = open("assets/template.html", 'r').read()
 
 def Build(path):
@@ -77,8 +77,15 @@ def Build(path):
 
     return html
 
+#xkcd generation
+inp = open("assets/xkcd.txt", 'r')
+out = open("assets/content/xkcd.md", 'w')
+out.write(open("assets/content/xkcdStart.md", 'r').read())
+for i in inp.read().split("\n")[0:-1]:
+    n = i.split(" ")
+    out.write("- [" + n[0] + "](https://xkcd.com/" + i.split(" ")[0] + ") - " + " ".join(n[2:]) + "\n")
+#endof xkcd generation
 server_address = ("localhost", 8000)
 httpd = HTTPServer(server_address, S)
-
-httpd.serve_forever()
 print("Server started")
+httpd.serve_forever()
