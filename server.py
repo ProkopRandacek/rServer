@@ -18,9 +18,9 @@ class S(BaseHTTPRequestHandler):
 
     def sendIco(self):
         self.send_response(200)
-        self.send_header("Content-type", "image/jpeg")
+        self.send_header("Content-type", "image/png")
         self.end_headers()
-        self.wfile.write(open("assets/favicon.jpeg", "rb").read())
+        self.wfile.write(open("assets/favicon.png", "rb").read())
 
     def sendImg(self, path):
         self.send_response(200)
@@ -77,15 +77,6 @@ def Build(path):
 
     return html
 
-#xkcd generation
-inp = open("assets/xkcd.txt", 'r')
-out = open("assets/content/xkcd.md", 'w')
-out.write(open("assets/content/xkcdStart.md", 'r').read())
-for i in inp.read().split("\n")[0:-1]:
-    n = i.split(" ")
-    out.write("- [" + n[0] + "](https://xkcd.com/" + i.split(" ")[0] + ") - " + " ".join(n[2:]) + "\n")
-#endof xkcd generation
-server_address = ("localhost", 8000)
+server_address = ("192.168.0.173", 8000)
 httpd = HTTPServer(server_address, S)
-print("Server started")
 httpd.serve_forever()
