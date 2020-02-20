@@ -48,6 +48,7 @@ This is a list of my favorite [xkcd](https://xkcd.com) comics.
 - [263](https://xkcd.com/263) - Certainty
 - [268](https://xkcd.com/268) - Choices: Part 5
 - [277](https://xkcd.com/277) - Long Light
+- [278](https://xkcd.com/278) - Black Hat Support
 - [283](https://xkcd.com/283) - Projection
 - [284](https://xkcd.com/284) - Tape Measure
 - [285](https://xkcd.com/285) - Wikipedian Protester
@@ -134,3 +135,5 @@ This is a list of my favorite [xkcd](https://xkcd.com) comics.
 - [2252](https://xkcd.com/2252) - Parenthetical Names
 - [2253](https://xkcd.com/2253) - Star Wars Voyager 1
 - [2256](https://xkcd.com/2256) - Bad Map Projection: South America
+- [2264](https://xkcd.com/2264) - Satellite
+- [2270](https://xkcd.com/2270) - Picking Bad Stock
