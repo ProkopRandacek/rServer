@@ -134,4 +134,3 @@ This is a list of my favorite [xkcd](https://xkcd.com) comics.
 - [2252](https://xkcd.com/2252) - Parenthetical Names
 - [2253](https://xkcd.com/2253) - Star Wars Voyager 1
 - [2256](https://xkcd.com/2256) - Bad Map Projection: South America
-- [2264](https://xkcd.com/2264) - Satellite
