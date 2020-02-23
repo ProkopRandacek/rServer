@@ -23,6 +23,20 @@ hr {
     border-color: #ff7315; 
 }
 
+p {
+    margin: 0px;
+}
+
+h2 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+ul {
+    padding-left: 20px;
+    margin: 0px;
+}
+
 .t {
     margin: 0px;
     padding-bottom: 10px;
@@ -36,6 +50,7 @@ hr {
 
 .navbar {
     text-align: center;
+    padding-top: 10px;
 }
 
 .navbar a {
