@@ -77,6 +77,6 @@ def Build(path):
 
     return html
 
-server_address = ("192.168.0.173", 8000)
+server_address = ("localhost", 8000)
 httpd = HTTPServer(server_address, S)
 httpd.serve_forever()
