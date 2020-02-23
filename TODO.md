@@ -1,0 +1,4 @@
+- czech version
+  - use language prefered by the browser (get from the request data idk)
+- github commit day streak calculating (on homepage/log)
+- ico not working sometimes?
