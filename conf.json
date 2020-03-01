@@ -2,27 +2,28 @@
   "address": "localhost",
   "port": 8000,
   "path": {
-    "css": "assets/styles.css",
-    "ico": "assets/favicon.png",
-    "setup": "assets/setup.png",
+    "css":      "assets/styles.css",
+    "ico":      "assets/favicon.png",
+    "setup":    "assets/setup.png",
     "template": "assets/template.html",
-    "content": "assets/content/"
+    "content":  "assets/content/",
+    "font":     "assets/inconsolata.ttf"
   },
   "navbar": {
     "names": ["Home", "My fav xkcd", "Tools", "Contact", "Log"],
     "paths": ["home", "xkcd",        "tools", "contact", "log"],
-    "separator": "<span> | </span>",
     "item": {
-        "pre": "<span",
-        "current": " class=\"current\"",
-        "prepath": "><a href=\"",
+        "pre":       "<span",
+        "current":   " class=\"current\"",
+        "prepath":   "><a href=\"",
         "separator": "\">",
-        "pos": "</a></span>"
-    }
+        "pos":       "</a></span>"
+    },
+    "separator": "<span> | </span>"
   },
   "log": {
-    "timepre": "[",
-    "timepos": "]",
+    "timepre":   "[",
+    "timepos":   "]",
     "separator": " - "
   }
 }

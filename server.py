@@ -32,14 +32,16 @@ class S(BaseHTTPRequestHandler):
 
     def do_GET(self): # is called when server receives get request
         arg = self.path[1:]
-        print("{0}{1}{2}{4}{3}{4}arg: {5}".format(conf.log.timepre, datetime.datetime.now(), conf.log.timepos, str(self.client_address), conf.log.separator, arg))
-        if   arg == "css":                    self.send(open(conf.path.css  , "r" ).read().encode("utf8"), "text/css" )
-        elif arg == "setup":                  self.send(open(conf.path.setup, "rb").read().encode("utf8"), "image/png")
-        elif arg in ["ico", "favicon.ico"]:   self.send(open(conf.path.ico  , "rb").read().encode("utf8"), "image/png")
-        elif arg in conf.navbar.paths + [""]: self.build(arg)
-        else:                                 self.build("404")
+        print(f"{conf.log.timepre}{datetime.datetime.now()}{conf.log.timepos}{conf.log.separator}{str(self.client_address)}{conf.log.separator}arg: {arg}")
+        if   arg == "":                self.build("home")
+        elif arg == "css":             self.send(open(conf.path.css  , "r" ).read().encode("utf8"), "text/css" )
+        elif arg == "font":            self.send(open(conf.path.font , "rb").read()               , "font/ttf" )
+        elif arg == "setup":           self.send(open(conf.path.setup, "rb").read()               , "image/png")
+        elif arg in "ico":             self.send(open(conf.path.ico  , "rb").read()               , "image/png")
+        elif arg in conf.navbar.paths: self.build(arg)
+        else:                          self.build("404")
 
-template = open(conf.path.template, "r").read() # loads html template
 conf = json.loads(open("conf.json").read(), object_hook=lambda d: namedtuple("X", d.keys())(*d.values())) # read config.json and convert it into object
+template = open(conf.path.template, "r").read() # loads html template
 print("Starting webserver")
 HTTPServer((conf.address, conf.port), S).serve_forever() # start http server
