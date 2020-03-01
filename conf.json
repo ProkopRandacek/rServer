@@ -19,5 +19,12 @@
         "separator": "\">",
         "pos": "</a></span>"
     }
+  },
+  "log": {
+    "time": {
+        "pre": "[",
+        "pos": "]"
+    },
+    "separator": " - "
   }
 }

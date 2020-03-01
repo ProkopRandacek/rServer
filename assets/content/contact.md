@@ -3,7 +3,7 @@ My email adress is prokop at <!-- ramdom@gmail.com comment@lol.com --> randacek 
 I also have:  
 
 - [Telegram](https://t.me/prokoprandacek)
-- Discord - Proicop#3264
+- <a href="#" onclick="alert('Proicop#3264')">Discord</a>
 - [Reddit](https://www.reddit.com/user/proiicop)
 - [Steam](https://steamcommunity.com/id/proicop)
 - [Github](https://github.com/ProkopRandacek)

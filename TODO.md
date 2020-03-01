@@ -9,3 +9,4 @@
     - do not use python's http server??
   - host server on raspbery pi and foward packets from random free subdomain temporarily until I feel like buying a domain??
 - check this file for grammatical and speling mistakes (important)
+- make the code not look like garbage
