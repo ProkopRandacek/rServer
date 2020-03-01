@@ -1,7 +1,7 @@
 {
   "address": "localhost",
   "port": 8000,
-  "paths": {
+  "path": {
     "css": "assets/styles.css",
     "ico": "assets/favicon.png",
     "setup": "assets/setup.png",
@@ -21,10 +21,8 @@
     }
   },
   "log": {
-    "time": {
-        "pre": "[",
-        "pos": "]"
-    },
+    "timepre": "[",
+    "timepos": "]",
     "separator": " - "
   }
 }
