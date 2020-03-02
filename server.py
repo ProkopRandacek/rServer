@@ -4,7 +4,7 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 
 class S(BaseHTTPRequestHandler):
     def log_message(self, format, *args):
-        pass # I dont like default log style
+        pass # I dont like default log style so I wrote my own
     
     def send(self, data, contentType): # universal data sending function
         self.send_response(200)
@@ -26,12 +26,12 @@ class S(BaseHTTPRequestHandler):
             navbar += conf.navbar.item.separator
             navbar += conf.navbar.names[i]
             navbar += conf.navbar.item.pos
-            navbar += "" if i == len(conf.navbar.names) - 1 else conf.navbar.separator
+            navbar += "" if i == len(conf.navbar.names) - 1 else conf.navbar.separator # last item doesnt have separator after
         html = template.replace("{title}", title).replace("{navbar}", navbar).replace("{content}", content) # insert contents into html template
-        self.send(html.encode("utf8"), "text/html")
+        self.send(html.encode("utf8"), "text/html") # sends data
 
     def do_GET(self): # is called when server receives get request
-        arg = self.path[1:]
+        arg = self.path[1:] # self.path always starts with "/"
         print(f"{conf.log.timepre}{datetime.datetime.now()}{conf.log.timepos}{conf.log.separator}{str(self.client_address)}{conf.log.separator}arg: {arg}")
         if   arg == "":                self.build("home")
         elif arg == "css":             self.send(open(conf.path.css  , "r" ).read().encode("utf8"), "text/css" )
