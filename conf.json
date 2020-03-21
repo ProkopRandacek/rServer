@@ -2,12 +2,13 @@
   "address": "localhost",
   "port": 8000,
   "path": {
-    "css":      "assets/styles.css",
-    "ico":      "assets/favicon.png",
-    "setup":    "assets/setup.png",
-    "template": "assets/template.html",
-    "content":  "assets/content/",
-    "font":     "assets/inconsolata.ttf"
+    "css":               "assets/styles.css",
+    "ico":               "assets/favicon.png",
+    "setup":             "assets/setup.png",
+    "template":          "assets/template.html",
+    "content":           "assets/content/",
+    "font":              "assets/inconsolata.ttf",
+    "log":               "log"
   },
   "navbar": {
     "names": ["Home", "My fav xkcd", "Tools", "Contact", "Log"],

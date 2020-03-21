@@ -3,12 +3,11 @@ This is a list of software I use and think it is worth of sharing.
 ******
 
 ## OS
-- Manjaro - I switched from Fedora because of AUR and it is awesome
+- I use Arch BTW
 
 ## Desktom environment
 
-- [Xfce](https://www.xfce.org/) - Simple and configurable de. I have [this setup](setup).  
-- [ULauncher](https://ulauncher.io/) - Nice little search bar. I use it instead of app list.  
+- [Kde](https://www.xfce.org/) - Nice and configurable de. I have [this setup](setup).  
 
 ## Text editor
 
