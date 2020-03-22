@@ -140,3 +140,4 @@ This is a list of my favorite [xkcd](https://xkcd.com) comics.
 - [2264](https://xkcd.com/2264) - Satellite
 - [2270](https://xkcd.com/2270) - Picking Bad Stock
 - [2274](https://xkcd.com/2274) - Stargazing 3
+- [2283](https://xkcd.com/2283) - Exa-Exabyte
