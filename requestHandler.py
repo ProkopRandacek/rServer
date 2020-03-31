@@ -1,4 +1,4 @@
-import markdown2, re
+import markdown2, re, ssl
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from log import log
 from config import c
@@ -54,4 +54,12 @@ class S(BaseHTTPRequestHandler):
         pass
 
 def start():
-    HTTPServer((c.address, c.port), S).serve_forever() # start http server
+    httpd = HTTPServer((c.address, c.port), S)
+
+    httpd.socket = ssl.wrap_socket(httpd.socket,
+                                   server_side=True,
+                                   certfile='/etc/letsencrypt/live/randacek.dev/fullchain.pem',
+                                   keyfile='/etc/letsencrypt/live/randacek.dev/privkey.pem',
+                                   ssl_version=ssl.PROTOCOL_TLSv1)
+
+    httpd.serve_forever()

@@ -1,6 +1,6 @@
 {
   "address": "10.10.10.197",
-  "port": 8000,
+  "port": 443,
   "debug": false,
   "path": {
     "css":      "assets/styles.css",
