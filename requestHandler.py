@@ -1,17 +1,15 @@
-import datetime, markdown2, json, subprocess, re
-from collections import namedtuple
+import markdown2, re
 from http.server import HTTPServer, BaseHTTPRequestHandler
+from log import log
+from config import c
+from image import imageDB
 
 ansi_filter = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
-
-def log(m):
-    m = f"{c.log.timepre}{datetime.datetime.now()}{c.log.timepos}{c.log.separator}" + m
-    print(m)
-    logfile.write(m)
+template = open(c.path.template, "r").read() # loads html template
 
 class S(BaseHTTPRequestHandler):
     def log_message(self, format, *args):
-        pass # I dont like default log style
+        pass
     
     def send(self, data, contentType): # universal data sending function
         self.send_response(200)
@@ -40,21 +38,20 @@ class S(BaseHTTPRequestHandler):
         self.send(html.encode("utf8"), "text/html") # sends data
 
     def do_GET(self): # is called when server receives get request
-        arg = self.path[1:] # self.path always starts with "/"
-        log(f"{str(self.client_address)}{c.log.separator}arg: {arg}")
+        arg = self.path[1:]
+        log(["GET REQUEST", str(self.client_address), "arg: " + arg])
         if   arg == "":             self.build("home")
         elif arg == "css":          self.send(open(c.path.css  , "r" ).read().encode("utf8"), "text/css" )
         elif arg == "font":         self.send(open(c.path.font , "rb").read()               , "font/ttf" )
         elif arg == "setup":        self.send(open(c.path.setup, "rb").read()               , "image/png")
         elif arg in "ico":          self.send(open(c.path.ico  , "rb").read()               , "image/png")
-        elif arg == "info":   self.build("nf")
+        elif arg.startswith("i"):   pass #TODO
+        elif arg == "info":         self.build("nf")
         elif arg in c.navbar.paths: self.build(arg)
         else:                       self.build("404")
+    
+    def do_POST(self):
+        pass
 
-c = json.loads(open("conf.json").read(), object_hook=lambda d: namedtuple("X", d.keys())(*d.values())) # read cig.json and convert it into object
-
-logfile = open(c.path.log, "w")
-template = open(c.path.template, "r").read() # loads html template
-
-log("Starting webserver")
-HTTPServer((c.address, c.port), S).serve_forever() # start http server
+def start():
+    HTTPServer((c.address, c.port), S).serve_forever() # start http server

@@ -1,14 +1,17 @@
 {
-  "address": "localhost",
+  "address": "10.10.10.197",
   "port": 8000,
+  "debug": false,
   "path": {
-    "css":               "assets/styles.css",
-    "ico":               "assets/favicon.png",
-    "setup":             "assets/setup.png",
-    "template":          "assets/template.html",
-    "content":           "assets/content/",
-    "font":              "assets/inconsolata.ttf",
-    "log":               "log"
+    "css":      "assets/styles.css",
+    "ico":      "assets/favicon.png",
+    "setup":    "assets/setup.png",
+    "template": "assets/template.html",
+    "content":  "assets/content/",
+    "font":     "assets/inconsolata.ttf",
+    "log":      "log",
+    "imageDB":  "img/db.json",
+    "images":	"img/images"
   },
   "navbar": {
     "names": ["Home", "My fav xkcd", "Tools", "Contact", "Log"],
@@ -26,5 +29,9 @@
     "timepre":   "[",
     "timepos":   "]",
     "separator": " - "
+  },
+  "image": {
+    "maxAge": 30000000,
+    "idLen": 3
   }
 }
