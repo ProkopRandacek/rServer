@@ -9,10 +9,7 @@
     text-align: center;
     color: #eeeeee;
     margin: auto;
-}
-
-html {
-	overflow-y: scroll;
+    scrollbar-width: none;
 }
 
 body {
@@ -55,3 +52,4 @@ ul { padding-left: 20px; }
 .navbar .current a { color: #ff7315; }
 .content { max-width: 700px; }
 .content, .content * { text-align: left; }
+::-webkit-scrollbar { display: none; }
