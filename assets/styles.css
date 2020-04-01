@@ -39,6 +39,12 @@ h2 {
     margin: 0px;
 }
 
+.content {
+    max-width: 700px;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
 .footer {
     font-size: 70%;
     padding-bottom: 5px;
@@ -50,6 +56,5 @@ ul { padding-left: 20px; }
 .navbar { padding-top: 10px; }
 .navbar a { text-decoration: none; }
 .navbar .current a { color: #ff7315; }
-.content { max-width: 700px; }
 .content, .content * { text-align: left; }
 ::-webkit-scrollbar { display: none; }
