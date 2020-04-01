@@ -1,4 +1,5 @@
 import time, random, json
+from collections import namedtuple
 from log import log
 from config import c
 
@@ -8,48 +9,48 @@ class image():
     name = None
     creationTime = None
 
-    def __init__():
-        self.name = genId()
+    def __init__(self, name):
+        self.name = name
         self.creationTime = time.time()
-        log(f"image {name} was created with time {time}", True)
+        log(f"image {self.name} was created with time {self.creationTime}", True)
 
-    def __del__():
+    def __del__(self):
         log(f"deleting image {self.name}", True)
         # TODO
 
 class imageDB():
-    images = None
-
+    images = [] 
     def __init__(self):
-        images = imageDB.load(c.path.imageDB)
+        #self.images = imageDB.load(c.path.imageDB)
+        self.images = [image(self.genId()), image(self.genId())]
 
     def __del__(self):
-        imageDB.save(images)
+        imageDB.save(self.images)
 
     def clear(self):
         nowTime = time.time()
         log("clearing images")
         c = 0
-        for i in images:
+        for i in self.images:
             if (nowTime - i.creationTime) > c.image.maxAge:
                 c += 1
                 del(i)
         log("clearing done", f"{c} images deleted in {time.time() - nowTime} seconds")
 
-    def genId():
+    def genId(self):
         while True:
-            name = random.choices(base62, k=nameLen)
-            for i in imageDB.images:
+            name = random.choices(base62, k=c.image.idLen)
+            for i in self.images:
                 if name == i.name:
                     break
             else:
-                return name
+                return "".join(name)
 
-    def getImage(Id):
+    def getImage(self, Id):
         pass
         #TODO
 
-    def uploadImage():
+    def uploadImage(self):
         pass
         #TODO
 
@@ -60,9 +61,9 @@ class imageDB():
     @staticmethod
     def load(DB):
         log("loading image DB")
-        #TODO
+        return json.loads(open(c.path.imageDB, "r").read(), object_hook=lambda d: namedtuple("X", d.keys())(*d.values()))
 
     @staticmethod
     def save(DB):
         log("saving image DB")
-        #TODO
+        open(c.path.imageDB, "w").write(json.dumps(DB, default=lambda x: x.__dict__))

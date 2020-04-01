@@ -40,26 +40,24 @@ class S(BaseHTTPRequestHandler):
     def do_GET(self): # is called when server receives get request
         arg = self.path[1:]
         log(["GET REQUEST", str(self.client_address), "arg: " + arg])
-        if   arg == "":             self.build("home")
-        elif arg == "css":          self.send(open(c.path.css  , "r" ).read().encode("utf8"), "text/css" )
-        elif arg == "font":         self.send(open(c.path.font , "rb").read()               , "font/ttf" )
-        elif arg == "setup":        self.send(open(c.path.setup, "rb").read()               , "image/png")
-        elif arg in "ico":          self.send(open(c.path.ico  , "rb").read()               , "image/png")
-        elif arg.startswith("i"):   pass #TODO
-        elif arg == "info":         self.build("nf")
-        elif arg in c.navbar.paths: self.build(arg)
-        else:                       self.build("404")
+        if   arg == "":                     self.build("home")
+        elif arg == "css":                  self.send(open(c.path.css  , "r" ).read().encode("utf8"), "text/css" )
+        elif arg == "font":                 self.send(open(c.path.font , "rb").read()               , "font/ttf" )
+        elif arg == "setup":                self.send(open(c.path.setup, "rb").read()               , "image/png")
+        elif arg in ["ico", "favicon.ico"]: self.send(open(c.path.ico  , "rb").read()               , "image/png")
+        elif arg.startswith("i"):           pass #TODO
+        elif arg == "info":                 self.build("nf")
+        elif arg in c.navbar.paths:         self.build(arg)
+        else:                               self.build("404")
     
     def do_POST(self):
         pass
 
 def start():
     httpd = HTTPServer((c.address, c.port), S)
-
     httpd.socket = ssl.wrap_socket(httpd.socket,
                                    server_side=True,
                                    certfile='/etc/letsencrypt/live/randacek.dev/fullchain.pem',
                                    keyfile='/etc/letsencrypt/live/randacek.dev/privkey.pem',
                                    ssl_version=ssl.PROTOCOL_TLSv1)
-
     httpd.serve_forever()

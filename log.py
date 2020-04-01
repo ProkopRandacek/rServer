@@ -1,7 +1,8 @@
 import datetime, inspect
 from config import c
 
-logfile = open(c.path.log, "w")
+open(c.path.log, "w").write("")
+logfile = open(c.path.log, "a")
 
 def log(m, d=False):
     if d and not c.debug: return
