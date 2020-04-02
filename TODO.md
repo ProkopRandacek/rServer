@@ -2,11 +2,6 @@
   - use language prefered by the browser (get from the request data idk)
 - github commit day streak calculating (on homepage/log)
   - note: download my github profile page, find "\" data-date=\"2019-05-19\"", get char before, >0?.
-- ico not working sometimes?
 - portfolio thing?
-- access server console from web???
-  - secure connection??
-    - do not use python's http server??
-  - host server on raspbery pi and foward packets from random free subdomain temporarily until I feel like buying a domain??
+- host server on raspberry pi
 - check this file for grammatical and speling mistakes (important)
-- make the code not look like garbage
