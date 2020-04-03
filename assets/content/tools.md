@@ -5,7 +5,7 @@ This is a list of software I use and think it is worth of sharing.
 ## OS
 - I use Arch BTW
 
-## Desktom environment
+## Desktop environment
 
 - [AwesomeWM](https://awesomewm.org) - It took a while to get working but i love how it ended up. I have [this setup](setup).  
 
