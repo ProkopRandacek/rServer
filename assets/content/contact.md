@@ -9,4 +9,4 @@ I also have:
 - [Steam](https://steamcommunity.com/id/proicop)
 - [Github](https://github.com/ProkopRandacek)
 - *[Twitter](https://twitter.com/prokop_randacek) (not active)*
-- *[Instagram](https://www.instagram.com/prokop.randacek) (not active)*
+- *[Instagram](https://www.instagram.com/prokoprandacek) (not active)*
