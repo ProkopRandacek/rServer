@@ -10,4 +10,4 @@ def log(m, d=False):
     filename = inspect.stack()[1][0].f_code.co_filename.split("/")[-1][:-3]
     m = f"{c.log.timepre}{datetime.datetime.now()}{c.log.timepos}{c.log.separator}{filename:<14}{c.log.separator}{c.log.separator.join(m)}"
     print(m)
-    logfile.write(m + "\n")
+    if c.log.saveToFile: logfile.write(m + "\n")

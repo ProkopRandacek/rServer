@@ -9,33 +9,31 @@ class image():
     name = None
     creationTime = None
 
-    def __init__(self, name):
+    def __init__(self, name, creationTime):
         self.name = name
-        self.creationTime = time.time()
+        self.creationTime = creationTime
         log(f"image {self.name} was created with time {self.creationTime}", True)
 
-    def __del__(self):
+    def delete(self):
         log(f"deleting image {self.name}", True)
-        # TODO
+        #TODO delete the file
 
 class imageDB():
     images = [] 
     def __init__(self):
-        #self.images = imageDB.load(c.path.imageDB)
-        self.images = [image(self.genId()), image(self.genId())]
-
-    def __del__(self):
-        imageDB.save(self.images)
+        self.load()
 
     def clear(self):
-        nowTime = time.time()
+        nowTime = self.getTime();
         log("clearing images")
-        c = 0
+        n = 0
         for i in self.images:
+            print(i.name, i.creationTime, nowTime - i.creationTime, (nowTime - i.creationTime) > c.image.maxAge)
             if (nowTime - i.creationTime) > c.image.maxAge:
-                c += 1
-                del(i)
-        log("clearing done", f"{c} images deleted in {time.time() - nowTime} seconds")
+                n += 1
+                i.delete()
+                self.images.remove(i)
+        log(["clearing done", f"{n} images deleted in {int(1000*(time.time() - nowTime))/1000} seconds"])
 
     def genId(self):
         while True:
@@ -46,24 +44,43 @@ class imageDB():
             else:
                 return "".join(name)
 
+    def getTime(self):
+        return int(time.time())
+
     def getImage(self, Id):
         pass
         #TODO
 
     def uploadImage(self):
-        pass
         #TODO
+        if len(self.images) > 62*62*62/100: self.clear()
+        self.images.append(image(self.genId(), self.getTime()))
 
-    def handleRequest(arg):
-        if arg.startswith("upload"): pass
-        #TODO
-
-    @staticmethod
-    def load(DB):
-        log("loading image DB")
-        return json.loads(open(c.path.imageDB, "r").read(), object_hook=lambda d: namedtuple("X", d.keys())(*d.values()))
-
-    @staticmethod
-    def save(DB):
+    def save(self):
         log("saving image DB")
-        open(c.path.imageDB, "w").write(json.dumps(DB, default=lambda x: x.__dict__))
+        with open(c.path.imageDB, "w") as data:
+            for i in self.images:
+                data.write(f"{i.name};{i.creationTime}\n")
+        log("image DB saved")
+
+    def load(self):
+        log("loading image DB")
+        data = open(c.path.imageDB, "r").read().split("\n")
+        for i in data[:-1]: # last index is allways empty
+            self.images.append(image(i[:3], int(i[4:])))
+        log(["loading images done", f"{len(self.images)} images loaded"])
+
+db = imageDB()
+
+for i in db.images:
+    print(i.name, i.creationTime)
+
+input()
+
+db.uploadImage()
+
+for i in db.images:
+    print(i.name, i.creationTime)
+
+db.clear()
+db.save()
