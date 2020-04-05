@@ -1,7 +1,7 @@
 {
   "address": "10.10.10.197",
   "port": 443,
-  "debug": false,
+  "debug": true,
   "path": {
     "css":      "assets/styles.css",
     "ico":      "assets/favicon.png",
@@ -10,12 +10,12 @@
     "content":  "assets/content/",
     "font":     "assets/inconsolata.ttf",
     "log":      "log",
-    "imageDB":  "img/db.json",
+    "imageDB":  "img/db",
     "images":	"img/images"
   },
   "navbar": {
-    "names": ["Home", "My fav xkcd", "Tools", "Contact", "Log"],
-    "paths": ["home", "xkcd",        "tools", "contact", "log"],
+    "names": ["Home", "My fav xkcd", "Tools", "Contact"],
+    "paths": ["home", "xkcd",        "tools", "contact"],
     "item": {
         "pre":       "<span",
         "current":   " class=\"current\"",
@@ -28,7 +28,8 @@
   "log": {
     "timepre":   "[",
     "timepos":   "]",
-    "separator": " - "
+    "separator": " - ",
+    "saveToFile": false
   },
   "image": {
     "maxAge": 30000000,

@@ -47,13 +47,9 @@ class imageDB():
     def getTime(self):
         return int(time.time())
 
-    def getImage(self, Id):
-        pass
-        #TODO
-
     def uploadImage(self):
         #TODO
-        if len(self.images) > 62*62*62/100: self.clear()
+        if len(self.images) > int(62*62*62/100): self.clear() # 2383 images
         self.images.append(image(self.genId(), self.getTime()))
 
     def save(self):
@@ -69,18 +65,3 @@ class imageDB():
         for i in data[:-1]: # last index is allways empty
             self.images.append(image(i[:3], int(i[4:])))
         log(["loading images done", f"{len(self.images)} images loaded"])
-
-db = imageDB()
-
-for i in db.images:
-    print(i.name, i.creationTime)
-
-input()
-
-db.uploadImage()
-
-for i in db.images:
-    print(i.name, i.creationTime)
-
-db.clear()
-db.save()
