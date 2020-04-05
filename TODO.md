@@ -1,3 +1,5 @@
+- /info doesnt work for some reason
+  - send empty page and than ask for neofetch output from js?
 - czech version
   - use language prefered by the browser (get from the request data idk)
 - github commit day streak calculating (on homepage/log)
