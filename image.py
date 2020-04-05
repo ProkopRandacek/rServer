@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import time, random, json
+import time, random
 from collections import namedtuple
 from log import log
 from config import c
@@ -32,10 +32,11 @@ class image():
 
     def delete(self):
         log(f"deleting image {self.name}", True)
-        os.remove(f"./{c.path.images}/{self.name}"
+        os.remove(f"./{c.path.images}/{self.name}")
 
 class imageDB():
     images = [] 
+
     def __init__(self):
         self.load()
 
@@ -65,7 +66,7 @@ class imageDB():
 
     def uploadImage(self):
         #TODO
-        if len(self.images) > int(62*62*62/100): self.clear() # 2383 images
+        if len(self.images) > int(62*62*62/100): self.clear() # 2383 images -> if 1 img = 5mb -> 12gb
         self.images.append(image(self.genId(), self.getTime()))
 
     def save(self):
