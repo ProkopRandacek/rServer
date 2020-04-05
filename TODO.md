@@ -1,3 +1,4 @@
+- implement that cool "304 Not Modified" thing
 - /info doesnt work for some reason
   - send empty page and than ask for neofetch output from js?
 - czech version
