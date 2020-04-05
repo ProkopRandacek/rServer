@@ -3,12 +3,12 @@
 This is a list of my favorite [xkcd](https://xkcd.com) comics.
 ******
 - [44](https://xkcd.com/44) - Love
-- [58](https://xkcd.com/58) - Why Do You Love Me?
 - [70](https://xkcd.com/70) - Guitar Hero
 - [85](https://xkcd.com/85) - Paths
 - [135](https://xkcd.com/135) - Substitute
 - [138](https://xkcd.com/138) - Pointers
 - [149](https://xkcd.com/149) - Sandwich
+- [150](https://xkcd.com/150) - Grownups
 - [152](https://xkcd.com/152) - Hamster Ball
 - [153](https://xkcd.com/153) - Cryptography
 - [156](https://xkcd.com/156) - Commented
