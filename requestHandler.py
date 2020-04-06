@@ -5,7 +5,6 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# 
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -61,7 +60,6 @@ class S(BaseHTTPRequestHandler):
         elif arg == "font":                 self.send(open(c.path.font , "rb").read()               , "font/ttf" )
         elif arg == "setup":                self.send(open(c.path.setup, "rb").read()               , "image/png")
         elif arg in ["ico", "favicon.ico"]: self.send(open(c.path.ico  , "rb").read()               , "image/png")
-        elif arg.startswith("i"):           pass #TODO
         elif arg == "info":                 self.build("nf")
         elif arg in c.navbar.paths:         self.build(arg)
         else:                               self.build("404")
