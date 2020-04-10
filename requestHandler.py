@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import re, ssl
+import ssl
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from log import log
 from config import c
@@ -34,14 +34,14 @@ class S(BaseHTTPRequestHandler):
     def do_GET(self): # is called when server receives get request
         arg = self.path[1:]
         log(["GET REQUEST", str(self.client_address), "arg: " + arg])
-        if   arg == "":                     self.send(build("home"))
+        if   arg == "":                     self.send(build("home"), "text/html")
         elif arg == "css":                  self.send(open(c.path.css  , "r" ).read().encode("utf8"), "text/css" )
         elif arg == "font":                 self.send(open(c.path.font , "rb").read()               , "font/ttf" )
         elif arg == "setup":                self.send(open(c.path.setup, "rb").read()               , "image/png")
         elif arg in ["ico", "favicon.ico"]: self.send(open(c.path.ico  , "rb").read()               , "image/png")
-        elif arg == "info":                 self.send(build("nf"))
-        elif arg in c.navbar.paths:         self.send(build(arg))
-        else:                               self.send(build("404"))
+        elif arg == "info":                 self.send(build("nf"), "text/html")
+        elif arg in c.navbar.paths:         self.send(build(arg), "text/html")
+        else:                               self.send(build("404"), "text/html")
     
     def do_POST(self):
         pass

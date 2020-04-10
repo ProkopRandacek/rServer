@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import subprocess, markdown2
+import subprocess, markdown2, re
 from config import c 
 
 ansi_filter = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
@@ -37,4 +37,4 @@ def build(path): # builds and sends html page from markdown file
         navbar += c.navbar.item.pos
         navbar += "" if i == len(c.navbar.names) - 1 else c.navbar.separator # last item doesnt have separator after
     html = template.replace("{title}", title).replace("{navbar}", navbar).replace("{content}", content) # insert contents into html template
-    return html.encode("utf8"), "text/html" # returns data
+    return html.encode("utf8") # returns data
