@@ -4,7 +4,7 @@
 
 ## Right now in development
 
-- Image hosting service on my website [GitHub](https://github/prokoprandacek/randacek.dev/)
+- Image hosting service on my website [GitHub](https://github.com/prokoprandacek/randacek.dev/)
 
 ## Todo
 
