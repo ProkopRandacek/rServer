@@ -20,9 +20,6 @@ from config import c
 from image import imageDB
 from pageBuilder import build
 
-ansi_filter = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
-template = open(c.path.template, "r").read() # loads html template
-
 class S(BaseHTTPRequestHandler):
     def log_message(self, format, *args):
         pass
