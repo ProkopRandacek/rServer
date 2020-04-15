@@ -10,6 +10,8 @@
     "content":  "assets/content/",
     "font":     "assets/inconsolata.ttf",
     "rukopis":  "assets/rukopis.ttf",
+    "robots":   "assets/robots.txt",
+    "sitemap":  "assets/sitemap.xml",
     "log":      "log",
     "imageDB":  "i/db",
     "images":	"i/images"
