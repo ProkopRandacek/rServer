@@ -20,6 +20,10 @@ ansi_filter = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
 template = open(c.path.template, "r").read() # loads html template
 
 def build(path): # builds and sends html page from markdown file
+    r = False
+    if path[-1] == "r":
+        path = path[:-1]
+        r = True
     path      = "home" if path == "" else path
     navbarNum = c.navbar.paths.index(path) if path in c.navbar.paths else -1
     title     = path if navbarNum == -1 else c.navbar.names[navbarNum]
@@ -37,4 +41,5 @@ def build(path): # builds and sends html page from markdown file
         navbar += c.navbar.item.pos
         navbar += "" if i == len(c.navbar.names) - 1 else c.navbar.separator # last item doesnt have separator after
     html = template.replace("{title}", title).replace("{navbar}", navbar).replace("{content}", content) # insert contents into html template
+    if r: html = html.replace("font", "rukopis")
     return html.encode("utf8") # returns data

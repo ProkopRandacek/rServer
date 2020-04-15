@@ -30,18 +30,20 @@ class S(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(data)
 
-
     def do_GET(self): # is called when server receives get request
         arg = self.path[1:]
         log(["GET REQUEST", str(self.client_address), "arg: " + arg])
-        if   arg == "":                     self.send(build("home"), "text/html")
-        elif arg == "css":                  self.send(open(c.path.css  , "r" ).read().encode("utf8"), "text/css" )
-        elif arg == "font":                 self.send(open(c.path.font , "rb").read()               , "font/ttf" )
-        elif arg == "setup":                self.send(open(c.path.setup, "rb").read()               , "image/png")
-        elif arg in ["ico", "favicon.ico"]: self.send(open(c.path.ico  , "rb").read()               , "image/png")
-        elif arg == "info":                 self.send(build("nf"), "text/html")
-        elif arg in c.navbar.paths:         self.send(build(arg), "text/html")
-        else:                               self.send(build("404"), "text/html")
+        if   arg == "css":                  self.send(open(c.path.css    , "r" ).read().encode("utf8"), "text/css"  )
+        elif arg == "robots.txt":           self.send(open(c.path.robots , "r" ).read().encode("utf8"), "text/plain")
+        elif arg == "sitemap.xml":          self.send(open(c.path.sitemap, "r" ).read().encode("utf8"), "text/xml"  )
+        elif arg == "font":                 self.send(open(c.path.font   , "rb").read()               , "font/ttf"  )
+        elif arg == "rukopis":              self.send(open(c.path.rukopis, "rb").read()               , "font/ttf"  )
+        elif arg == "setup":                self.send(open(c.path.setup  , "rb").read()               , "image/png" )
+        elif arg in ["ico", "favicon.ico"]: self.send(open(c.path.ico    , "rb").read()               , "image/png" )
+        elif arg[:-1] in c.navbar.paths:    self.send(build(arg   ),                                    "text/html" )
+        elif arg == "":                     self.send(build("home"),                                    "text/html" )
+        elif arg == "info":                 self.send(build("nf"  ),                                    "text/html" )
+        else:                               self.send(build("404" ),                                    "text/html" )
     
     def do_POST(self):
         pass

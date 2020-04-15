@@ -1,5 +1,5 @@
 {
-  "address": "10.10.10.197",
+  "address": "localhost",
   "port": 443,
   "debug": true,
   "path": {
@@ -9,6 +9,7 @@
     "template": "assets/template.html",
     "content":  "assets/content/",
     "font":     "assets/inconsolata.ttf",
+    "rukopis":  "assets/rukopis.ttf",
     "log":      "log",
     "imageDB":  "i/db",
     "images":	"i/images"
