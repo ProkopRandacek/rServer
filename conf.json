@@ -1,12 +1,12 @@
 {
-  "address": "10.10.10.197",
+	"address": "10.10.10.197",
   "port": 443,
   "debug": true,
   "path": {
-    "css":      "assets/styles.css",
+		"css":      "assets/styles.css",
     "ico":      "assets/favicon.png",
     "setup":    "assets/setup.png",
-    "template": "assets/template.html",
+		"template": "assets/template.html",
     "content":  "assets/content/",
     "font":     "assets/inconsolata.ttf",
     "rukopis":  "assets/rukopis.ttf",
