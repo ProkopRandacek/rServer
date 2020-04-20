@@ -17,7 +17,24 @@
 import json
 from collections import namedtuple
 
+rules = {}
+contentTypes = {}
+
+
+def rulesReader(path):
+    f = open(path).read().split("\n")
+    for line in rulesfile:
+        line = line.replace(" ", "").split("#")[0].split("=")
+        if not len(line) == 2:
+            continue
+        rules[line[0]] = line[1]
+
+
 c = json.loads(
     open("conf.json").read(),
     object_hook=lambda d: namedtuple("X", d.keys())(*d.values()),
 )
+
+
+rules = rulesReader(c.path.rules)
+contentTypes = rulesReader(c.path.contentTypes)

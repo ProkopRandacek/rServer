@@ -1,0 +1,3 @@
+# If you want to send weird filetypes, specify the content type (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type)
+ttf=font/ttf
+png=image/png

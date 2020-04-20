@@ -1,16 +1,19 @@
 {
     "address": "10.10.10.197",
     "port": 443,
+    "findFile": false,
     "debug": true,
     "path": {
-        "css": "assets/styles.css",
-        "ico": "assets/favicon.png",
-        "setup": "assets/setup.png",
-        "template": "assets/template.html",
-        "content": "content",
-        "font": "assets/inconsolata.ttf",
-        "robots": "assets/robots.txt",
-        "sitemap": "assets/sitemap.xml",
+        "css": "../assets/styles.css",
+        "ico": "../assets/favicon.png",
+        "setup": "../assets/setup.png",
+        "template": "../assets/template.html",
+        "content": "../content/",
+        "font": "../assets/inconsolata.ttf",
+        "robots": "../assets/robots.txt",
+        "sitemap": "../assets/sitemap.xml",
+        "rules": "rules",
+        "contentTypes": "contentTypes",
         "log": "log"
     },
     "navbar": {

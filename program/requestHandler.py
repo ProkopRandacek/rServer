@@ -64,6 +64,6 @@ def start():
         server_side=True,
         certfile="/etc/letsencrypt/live/randacek.dev/fullchain.pem",
         keyfile="/etc/letsencrypt/live/randacek.dev/privkey.pem",
-        ssl_version=ssl.PROTOCOL_TLSv1,
+        ssl_version=ssl.PROTOCOL_TLSv1_2,
     )
     httpd.serve_forever()
