@@ -7,3 +7,4 @@ My custom webserver software
 - Add code description for easy modifications
 - Json file for mapping requests to files
   - like "example.com/xkcd" refers to some/path/to/xkcdfile.md
+- implement that "304 Not Modified" thing
