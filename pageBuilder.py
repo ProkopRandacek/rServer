@@ -13,29 +13,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import subprocess, markdown2, re
+import subprocess, markdown2, re, os.path
 from config import c
 
-ansi_filter = re.compile(r"\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])")
 template = open(c.path.template, "r").read()  # loads html template
 
 
-def build(path):  # builds and sends html page from markdown file
-    r = False
-    if path[-1] == "r":
-        path = path[:-1]
-        r = True
-    path = "home" if path == "" else path
-    navbarNum = c.navbar.paths.index(path) if path in c.navbar.paths else -1
-    title = path if navbarNum == -1 else c.navbar.names[navbarNum]
-    if path == "nf":
-        subprocess.call(["./nf.sh"])
-    content = open(c.path.content + path + ".md", "r").read()
-    content = (
-        ansi_filter.sub("", content.replace("\n", "<br>").replace(" ", "&nbsp;"))
-        if path == "nf"
-        else markdown2.markdown(open(c.path.content + path + ".md", "r").read())
-    )
+def navbarer(navbarNum):
     navbar = ""
     for i in range(len(c.navbar.names)):  # builds navbar
         navbar += c.navbar.item.pre
@@ -50,11 +34,36 @@ def build(path):  # builds and sends html page from markdown file
         navbar += (
             "" if i == len(c.navbar.names) - 1 else c.navbar.separator
         )  # last item doesnt have separator after
-    html = (
-        template.replace("{title}", title)
-        .replace("{navbar}", navbar)
-        .replace("{content}", content)
-    )  # insert contents into html template
-    if r:
-        html = html.replace("font", "rukopis")
+    return navbar
+
+
+def contenter(table):
+    html = template
+    for i in table:
+        html = html.replace(i[0], i[1])
+    return html
+
+
+def generate(path):
+    navbarNum = c.navbar.paths.index(path) if path in c.navbar.paths else -1
+    title = path if navbarNum == -1 else c.navbar.names[navbarNum]
+    navbar = navbarer(navbarNum)
+    content = markdown2.markdown(open(c.path.content + path + ".md", "r").read())
+    html = contenter([["{title}", title], ["{navbar}", navbar], ["{content}", content]])
+
+
+def build(path):  # builds and sends html page from markdown file
+    if path == "stuff/":
+        path = "stuff"
+    elif path.startswith("stuff/"):
+        return stuffReader(path)
+    if path == "":
+        path = "home"
+    html = generate(path)
     return html.encode("utf8")  # returns data
+
+
+def stuffReader(rawpath):
+    path = rawpath.split("/")
+    if os.path.isfile(c.path.stuff + rawpath + ".md"):
+        pass

@@ -1,41 +1,46 @@
 {
 	"address": "10.10.10.197",
-  "port": 443,
-  "debug": true,
-  "path": {
-		"css":      "assets/styles.css",
-    "ico":      "assets/favicon.png",
-    "setup":    "assets/setup.png",
+	"port": 443,
+	"debug": true,
+	"path": {
+		"css": "assets/styles.css",
+		"ico": "assets/favicon.png",
+		"setup": "assets/setup.png",
 		"template": "assets/template.html",
-    "content":  "assets/content/",
-    "font":     "assets/inconsolata.ttf",
-    "rukopis":  "assets/rukopis.ttf",
-    "robots":   "assets/robots.txt",
-    "sitemap":  "assets/sitemap.xml",
-    "log":      "log",
-    "imageDB":  "i/db",
-    "images":	"i/images"
-  },
-  "navbar": {
-    "names": ["Home", "My fav xkcd", "Tools", "Contact", "Projects"],
-    "paths": ["home", "xkcd",        "tools", "contact", "projects"],
-    "item": {
-        "pre":       "<span",
-        "current":   " class=\"current\"",
-        "prepath":   "><a href=\"",
-        "separator": "\">",
-        "pos":       "</a></span>"
-    },
-    "separator": "<span> | </span>"
-  },
-  "log": {
-    "timepre":   "[",
-    "timepos":   "]",
-    "separator": " - ",
-    "saveToFile": false
-  },
-  "image": {
-    "maxAge": 30000000,
-    "idLen": 3
-  }
+		"content": "assets/content/",
+		"font": "assets/inconsolata.ttf",
+		"robots": "assets/robots.txt",
+		"sitemap": "assets/sitemap.xml",
+		"log": "log"
+	},
+	"navbar": {
+		"names": [
+			"Home",
+			"My fav xkcd",
+			"Tools",
+			"Contact",
+			"Projects"
+		],
+		"paths": [
+			"home",
+			"xkcd",
+			"tools",
+			"contact",
+			"projects"
+		],
+		"item": {
+			"pre": "<span",
+			"current": " class=\"current\"",
+			"prepath": "><a href=\"",
+			"separator": "\">",
+			"pos": "</a></span>"
+		},
+		"separator": "<span> | </span>"
+	},
+	"log": {
+		"timepre": "[",
+		"timepos": "]",
+		"separator": " - ",
+		"saveToFile": false
+	}
 }

@@ -48,12 +48,8 @@ class S(BaseHTTPRequestHandler):
             self.send(open(c.path.setup, "rb").read(), "image/png")
         elif arg in ["ico", "favicon.ico"]:
             self.send(open(c.path.ico, "rb").read(), "image/png")
-        elif arg in c.navbar.paths:
+        elif arg in c.navbar.paths + [""] or arg.startswith("stuff"):
             self.send(build(arg), "text/html")
-        elif arg == "":
-            self.send(build("home"), "text/html")
-        elif arg == "info":
-            self.send(build("nf"), "text/html")
         else:
             self.send(build("404"), "text/html")
 
