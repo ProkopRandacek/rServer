@@ -1,0 +1,13 @@
+# This is a comment
+example         = content/randomfile.md # "example.com/example" will return file "content/randomfile.md"
+myfavouritexkcd = content/xkcd.md # multiple rules may point to the same file
+xkcd            = content/xkcd.md # you can use spaces to align the rules
+homepage=content/home.md#but you dont have to
+# smt=content/file.md # this rule is commented and will be ignored
+
+# Empty lines will be kept
+
+
+# If you want to send weird filetypes, specify the content type (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type)
+ttf=font/ttf
+png=image/png

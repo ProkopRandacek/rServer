@@ -1,0 +1,46 @@
+{
+    "address": "10.10.10.197",
+    "port": 443,
+    "debug": true,
+    "path": {
+        "css": "assets/styles.css",
+        "ico": "assets/favicon.png",
+        "setup": "assets/setup.png",
+        "template": "assets/template.html",
+        "content": "content",
+        "font": "assets/inconsolata.ttf",
+        "robots": "assets/robots.txt",
+        "sitemap": "assets/sitemap.xml",
+        "log": "log"
+    },
+    "navbar": {
+        "names": [
+            "Home",
+            "My fav xkcd",
+            "Tools",
+            "Contact",
+            "Projects"
+        ],
+        "paths": [
+            "home",
+            "xkcd",
+            "tools",
+            "contact",
+            "projects"
+        ],
+        "item": {
+            "pre": "<span",
+            "current": " class=\"current\"",
+            "prepath": "><a href=\"",
+            "separator": "\">",
+            "pos": "</a></span>"
+        },
+        "separator": "<span> | </span>"
+    },
+    "log": {
+        "timepre": "[",
+        "timepos": "]",
+        "separator": " - ",
+        "saveToFile": false
+    }
+}
