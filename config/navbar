@@ -1,0 +1,15 @@
+names=Home;My fav xkcd;Tools;Contact;Projects
+links=homepage;xkcd;page1;page2;projects # all these links should be defined in rules
+
+pre           = <span
+current       = &sclass&e"current" # to keep space at a start or end of a value, use &s as a space
+prepath       = ><a href&e" # &e = "="
+itemSeparator = ">
+pos           = </a></span>
+separator     = <span> | </span>
+
+
+# result: 
+# <span><a href="{path}">{name}</a></span><span> | <span>... repeating
+# for current item
+# <span class="current"><a href="{path}">{name}</a></span><span> | <span>... repeating

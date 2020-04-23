@@ -1,0 +1,8 @@
+# Specify all the content types here 
+md   = text/html # md gets converted to html
+html = text/html
+css  = text/css
+txt  = text/plain
+xml  = text/xml
+ttf  = font/ttf
+png  = image/png

@@ -1,10 +1,8 @@
-# randacek.dev - my personal webserver software
+# rServer - simple webserver
 # Copyright (C) 2020  Prokop Randáček
 #
 # This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
+# it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -13,12 +11,16 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import ssl
+import ssl, os.path
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from log import log
-from config import c
-from image import imageDB
+from config import c, rules, contentTypes
 from pageBuilder import build
+
+if not os.path.isfile(c.path.root + c.path.notfound):
+    raise FileNotFoundError(
+        f"There is no such file {c.path.root + c.path.notfound} (from conf.json; path.notfound)."
+    )
 
 
 class S(BaseHTTPRequestHandler):
@@ -34,24 +36,29 @@ class S(BaseHTTPRequestHandler):
     def do_GET(self):  # is called when server receives get request
         arg = self.path[1:]
         log(["GET REQUEST", str(self.client_address), "arg: " + arg])
-        if arg == "css":
-            self.send(open(c.path.css, "r").read().encode("utf8"), "text/css")
-        elif arg == "robots.txt":
-            self.send(open(c.path.robots, "r").read().encode("utf8"), "text/plain")
-        elif arg == "sitemap.xml":
-            self.send(open(c.path.sitemap, "r").read().encode("utf8"), "text/xml")
-        elif arg == "font":
-            self.send(open(c.path.font, "rb").read(), "font/ttf")
-        elif arg == "rukopis":
-            self.send(open(c.path.rukopis, "rb").read(), "font/ttf")
-        elif arg == "setup":
-            self.send(open(c.path.setup, "rb").read(), "image/png")
-        elif arg in ["ico", "favicon.ico"]:
-            self.send(open(c.path.ico, "rb").read(), "image/png")
-        elif arg in c.navbar.paths + [""] or arg.startswith("stuff"):
-            self.send(build(arg), "text/html")
+        path = ""
+        header = ""
+        for (rule, p) in rules.items():
+            if rule == arg:
+                path = c.path.root + p
+                break
         else:
-            self.send(build("404"), "text/html")
+            path = c.path.root + c.path.notfound
+        if not os.path.isfile(path):
+            path = c.path.root + c.path.notfound
+        for (ct, h) in contentTypes.items():
+            if path.endswith(f".{ct}"):
+                header = h
+                break
+        else:
+            header = "text/plain"
+        if path.endswith(".md"):
+            data = build(path)
+        else:
+            data = open(data, "r").read()
+        if header.split("/")[0] == "text":
+            data = data.encode("utf-8")
+        self.send(data, header)
 
     def do_POST(self):
         pass
@@ -59,11 +66,11 @@ class S(BaseHTTPRequestHandler):
 
 def start():
     httpd = HTTPServer((c.address, c.port), S)
-    httpd.socket = ssl.wrap_socket(
+    """httpd.socket = ssl.wrap_socket(
         httpd.socket,
         server_side=True,
-        certfile="/etc/letsencrypt/live/randacek.dev/fullchain.pem",
-        keyfile="/etc/letsencrypt/live/randacek.dev/privkey.pem",
+        certfile=c.path.certfile,
+        keyfile=c.path.keyfile,
         ssl_version=ssl.PROTOCOL_TLSv1_2,
-    )
+    )"""
     httpd.serve_forever()

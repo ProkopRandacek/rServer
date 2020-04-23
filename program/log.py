@@ -17,8 +17,8 @@
 import datetime, inspect
 from config import c
 
-open(c.path.log, "w").write("")
-logfile = open(c.path.log, "a")
+open(c.path.root + c.path.log, "w").write("")
+logfile = open(c.path.root + c.path.log, "a")
 
 
 def log(m, d=False):

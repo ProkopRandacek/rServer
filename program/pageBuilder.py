@@ -14,27 +14,29 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import subprocess, markdown2, re, os.path
-from config import c
+from config import c, navbar, rules
 
-template = open(c.path.template, "r").read()  # loads html template
+template = open(c.path.root + c.path.template, "r").read()  # loads html template
+navbarPaths = []
+for link in navbar["links"]:  # get filepaths of files that are linked in navbar
+    if link in rules:
+        navbarPaths.append(c.path.root + rules[link])
 
 
 def navbarer(navbarNum):
-    navbar = ""
-    for i in range(len(c.navbar.names)):  # builds navbar
-        navbar += c.navbar.item.pre
-        navbar += (
-            c.navbar.item.current if i == navbarNum else ""
-        )  # current item is highlighted
-        navbar += c.navbar.item.prepath
-        navbar += c.navbar.paths[i]
-        navbar += c.navbar.item.separator
-        navbar += c.navbar.names[i]
-        navbar += c.navbar.item.pos
-        navbar += (
-            "" if i == len(c.navbar.names) - 1 else c.navbar.separator
+    n = ""
+    for i in range(len(navbar["names"])):  # builds navbar
+        n += navbar["pre"]
+        n += navbar["current"] if i == navbarNum else ""  # current item is highlighted
+        n += navbar["prepath"]
+        n += navbar["links"][i]
+        n += navbar["itemSeparator"]
+        n += navbar["names"][i]
+        n += navbar["pos"]
+        n += (
+            "" if i == len(navbar["names"]) - 1 else navbar["separator"]
         )  # last item doesnt have separator after
-    return navbar
+    return n
 
 
 def contenter(table):
@@ -44,26 +46,10 @@ def contenter(table):
     return html
 
 
-def generate(path):
-    navbarNum = c.navbar.paths.index(path) if path in c.navbar.paths else -1
-    title = path if navbarNum == -1 else c.navbar.names[navbarNum]
-    navbar = navbarer(navbarNum)
-    content = markdown2.markdown(open(c.path.content + path + ".md", "r").read())
-    html = contenter([["{title}", title], ["{navbar}", navbar], ["{content}", content]])
-
-
 def build(path):  # builds and sends html page from markdown file
-    if path == "stuff/":
-        path = "stuff"
-    elif path.startswith("stuff/"):
-        return stuffReader(path)
-    if path == "":
-        path = "home"
-    html = generate(path)
-    return html.encode("utf8")  # returns data
-
-
-def stuffReader(rawpath):
-    path = rawpath.split("/")
-    if os.path.isfile(c.path.stuff + rawpath + ".md"):
-        pass
+    navbarNum = navbarPaths.index(path) if path in navbarPaths else -1
+    title = path if navbarNum == -1 else navbar["names"][navbarNum]
+    n = navbarer(navbarNum)
+    content = markdown2.markdown(open(path, "r").read())
+    html = contenter([["{title}", title], ["{navbar}", n], ["{content}", content]])
+    return html

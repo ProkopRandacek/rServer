@@ -3,6 +3,7 @@ example         = content/randomfile.md # "example.com/example" will return file
 myfavouritexkcd = content/xkcd.md # multiple rules may point to the same file
 xkcd            = content/xkcd.md # you can use spaces to align the rules
 homepage=content/home.md#but you dont have to
+=content/home.md # for "example.com/" case
 # smt=content/file.md # this rule is commented and will be ignored
 
 # Empty lines will be kept

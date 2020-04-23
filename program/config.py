@@ -17,24 +17,40 @@
 import json
 from collections import namedtuple
 
+
+configPath = "../config/conf.json"
+
+
 rules = {}
 contentTypes = {}
 
 
 def rulesReader(path):
+    d = {}
     f = open(path).read().split("\n")
-    for line in rulesfile:
-        line = line.replace(" ", "").split("#")[0].split("=")
+    for line in f:
+        line = line.split("#")[0].split("=")
         if not len(line) == 2:
             continue
-        rules[line[0]] = line[1]
+        if ";" in line[1]:
+            line[1] = list(
+                map(
+                    lambda x: x.strip().replace("&e", "=").replace("&s", " "),
+                    line[1].split(";"),
+                )
+            )
+        else:
+            line[1] = line[1].strip().replace("&e", "=").replace("&s", " ")
+        d[line[0].strip()] = line[1]
+    return d
 
 
 c = json.loads(
-    open("conf.json").read(),
+    open(configPath).read(),
     object_hook=lambda d: namedtuple("X", d.keys())(*d.values()),
 )
 
 
-rules = rulesReader(c.path.rules)
-contentTypes = rulesReader(c.path.contentTypes)
+rules = rulesReader(c.path.root + c.path.rules)
+contentTypes = rulesReader(c.path.root + c.path.contentTypes)
+navbar = rulesReader(c.path.root + c.path.navbar)
