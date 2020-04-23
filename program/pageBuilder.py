@@ -46,10 +46,17 @@ def contenter(table):
     return html
 
 
-def build(path):  # builds and sends html page from markdown file
+def buildMD(path):
+    content = markdown2.markdown(open(path, "r").read())
+    return build(path, content)
+
+
+def build(path, content=None):
+    if content == None:
+        content = open(path, "r").read()
+    content = content.replace("{usetemplate}", "")
     navbarNum = navbarPaths.index(path) if path in navbarPaths else -1
     title = path if navbarNum == -1 else navbar["names"][navbarNum]
     n = navbarer(navbarNum)
-    content = markdown2.markdown(open(path, "r").read())
     html = contenter([["{title}", title], ["{navbar}", n], ["{content}", content]])
     return html

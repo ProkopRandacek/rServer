@@ -1,36 +1,14 @@
-<!-- Note: the cool web layout stolen from slama.dev. lol. Just the layout not the html code, css nor python program. Thats all me. -->
 <!doctype html>
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta name="author"   content="Prokop Randáček">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-		<link rel="stylesheet" href="https://randacek.dev/css" type="text/css">
-		<link rel="icon"       href="https://randacek.dev/ico" type="image/png">
-		<link rel="stylesheet" href="https://randacek.dev/font">
-
-		<title>randacek.dev - {title}</title>
+		<link rel="stylesheet" href="css"  type="text/css">
+		<title>rServer web - {title}</title>
 	</head>
 	<body>
-		<div class="header">
-			<h1>randacek.dev</h1>
-			<p class="t">Prokop Randáček's web.</p>
-		</div>
-		<div class="navbar">
-			<!-- Generated -->
-			{navbar}
-			<!-- end of Generated -->
-		</div>
-		<div class="content">
-			<!-- Generated -->
-			{content}
-			<!-- end of Generated -->
-		</div>
-		<div class="footer">
-			Made by me. 
-			<a href="https://github.com/ProkopRandacek/randacek.dev">source</a>
-		</div>
-	<script>console.log("this is an easter egg")</script>
+		<h1>My web</h1>
+		{navbar}
+		<hr>
+		{content}
 	</body>
 </html>

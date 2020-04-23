@@ -15,7 +15,7 @@ import ssl, os.path
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from log import log
 from config import c, rules, contentTypes
-from pageBuilder import build
+from pageBuilder import build, buildMD
 
 if not os.path.isfile(c.path.root + c.path.notfound):
     raise FileNotFoundError(
@@ -52,12 +52,18 @@ class S(BaseHTTPRequestHandler):
                 break
         else:
             header = "text/plain"
+
+        print(path)
         if path.endswith(".md"):
-            data = build(path)
+            data = buildMD(path).encode("utf-8")
+        elif not header.split("/")[0] == "text":
+            data = open(path, "rb").read()
         else:
-            data = open(data, "r").read()
-        if header.split("/")[0] == "text":
+            data = open(path, "r").read()
+            if data.startswith("{usetemplate}"):
+                data = build(path, data)
             data = data.encode("utf-8")
+
         self.send(data, header)
 
     def do_POST(self):

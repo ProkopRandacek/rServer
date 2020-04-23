@@ -1,11 +1,14 @@
 # This is a comment
-example         = content/randomfile.md # "example.com/example" will return file "content/randomfile.md"
-myfavouritexkcd = content/xkcd.md # multiple rules may point to the same file
-xkcd            = content/xkcd.md # you can use spaces to align the rules
+example     = content/randomfile.md # "example.com/example" will return file "content/randomfile.md"
+myfirstpage = content/1.md # multiple rules may point to the same file
+page1       = content/1.md # you can use spaces to align the rules
 homepage=content/home.md#but you dont have to
+page2       = content/2.html
+page3       = content/3.html
+projects    = content/projects.md
 =content/home.md # for "example.com/" case
 # smt=content/file.md # this rule is commented and will be ignored
 
-# Empty lines will be kept
 
-
+css  = assets/styles.css
+font = assets/inconsolata.ttf
