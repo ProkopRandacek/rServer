@@ -5,13 +5,7 @@
     "debug": true,
     "path": {
         "root": "../",
-        "css": "assets/styles.css",
-        "ico": "assets/favicon.png",
-        "setup": "assets/setup.png",
         "template": "assets/template.html",
-        "font": "assets/inconsolata.ttf",
-        "robots": "assets/robots.txt",
-        "sitemap": "assets/sitemap.xml",
         "certfile": "/etc/letsencrypt/live/randacek.dev/fullchain.pem",
         "keyfile": "/etc/letsencrypt/live/randacek.dev/privkey.pem",
         "notfound": "content/404.md",
@@ -19,30 +13,6 @@
         "rules": "config/rules",
         "navbar": "config/navbar",
         "log": "log"
-    },
-    "navbar": {
-        "names": [
-            "Home",
-            "My fav xkcd",
-            "Tools",
-            "Contact",
-            "Projects"
-        ],
-        "paths": [
-            "home",
-            "xkcd",
-            "tools",
-            "contact",
-            "projects"
-        ],
-        "item": {
-            "pre": "<span",
-            "current": " class=\"current\"",
-            "prepath": "><a href=\"",
-            "separator": "\">",
-            "pos": "</a></span>"
-        },
-        "separator": "<span> | </span>"
     },
     "log": {
         "timepre": "[",
