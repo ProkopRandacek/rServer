@@ -10,15 +10,14 @@ Contains all pure content files (for example the text on your home page)
 Contains all resources needed by pages (css, fonts, icons, images, ...)
 
 ## `config/`
+Contains following files:
 
-### `conf.json`
-- TODO
-
-### `contentTypes`
-- TODO
-
-### `rules`
-- TODO
+- `conf.json`
+  - TODO
+- `contentTypes`
+  - TODO
+- `rules`
+  - TODO
 
 ### Todo
 - Scan for new pages on startup
