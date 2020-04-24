@@ -72,11 +72,11 @@ class S(BaseHTTPRequestHandler):
 
 def start():
     httpd = HTTPServer((c.address, c.port), S)
-    """httpd.socket = ssl.wrap_socket(
+    httpd.socket = ssl.wrap_socket(
         httpd.socket,
         server_side=True,
         certfile=c.path.certfile,
         keyfile=c.path.keyfile,
         ssl_version=ssl.PROTOCOL_TLSv1_2,
-    )"""
+    )
     httpd.serve_forever()
