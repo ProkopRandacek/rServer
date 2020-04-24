@@ -53,7 +53,6 @@ class S(BaseHTTPRequestHandler):
         else:
             header = "text/plain"
 
-        print(path)
         if path.endswith(".md"):
             data = buildMD(path).encode("utf-8")
         elif not header.split("/")[0] == "text":
