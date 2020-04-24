@@ -3,21 +3,21 @@ My custom webserver software
 
 `content/`, `assets/` and `config/` contain example configuration and content. Edit those to configure your web.
 
-##`content/`
+## `content/`
 Contains all pure content files (for example the text on your home page)
 
-##`assets/`
+## `assets/`
 Contains all resources needed by pages (css, fonts, icons, images, ...)
 
 ## `config/`
 
-###`conf.json`
+### `conf.json`
 - TODO
 
-###`contentTypes`
+### `contentTypes`
 - TODO
 
-###`rules`
+### `rules`
 - TODO
 
 ### Todo
