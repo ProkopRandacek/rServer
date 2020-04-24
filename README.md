@@ -18,6 +18,8 @@ Contains following files:
   - TODO
 - `rules`
   - TODO
+- `navbar`
+  - TODO
 
 ### Todo
 - Scan for new pages on startup
