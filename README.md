@@ -1,7 +1,13 @@
 # rServer
 My custom webserver software
 
-`content/`, `assets/` and `config/` contain example configuration and content. Edit those to configure your web.
+# Setup
+To install the server, simply clone this repository and install the dependencies (in `program/` do `pip install -r requirements.txt`)
+To run the server run the `main.py` file in `program/` (You need to be in the same folder as `main.py` when you are running the server becatuse all the paths are by default relative)
+
+# Configuration
+
+Note: `content/`, `assets/` and `config/` dont need to be used. You can have all in one folder or whatever. All the paths to all files are set in `rules` or `config.json` files. If you want to change the `config/config.json` file location. You need to change the `configPath` variable in `program/config.py`
 
 ## `content/`
 Contains all pure content files (for example the text on your home page)
@@ -12,7 +18,7 @@ Contains all resources needed by pages (css, fonts, icons, images, ...)
 ## `config/`
 Contains following files:
 
-- `conf.json`
+- `conf.json` file with general server settings
   - `address` = the address server is running on
   - `port` = the port server should listen on (80 for http, 443 for https)
   - `findFile` = Not implemented yet
