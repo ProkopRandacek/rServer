@@ -2,8 +2,8 @@
 My custom webserver software
 
 # Setup
-To install the server, simply clone this repository and install the dependencies (in `program/` do `pip install -r requirements.txt`)
-To run the server run the `main.py` file in `program/` (You need to be in the same folder as `main.py` when you are running the server becatuse all the paths are by default relative)
+To install the server, simply clone this repository and install the dependencies (in `program/` do `pip install -r requirements.txt`)  
+To run the server run the `main.py` file in `program/` (You need to be in the same folder as `main.py` when you are running the server becatuse all the paths are by default relative)  
 
 # Configuration
 
