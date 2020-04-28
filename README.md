@@ -3,11 +3,11 @@ My custom webserver software
 
 # Setup
 To install the server, simply clone this repository and install the dependencies (in `program/` do `pip install -r requirements.txt`)  
-To run the server run the `main.py` file in `program/` (You need to be in the same folder as `main.py` when you are running the server becatuse all the paths are by default relative)  
+To run the server run `main.py` file (Py 3.8 recommended) in `program/` (You need to be in the same folder as `main.py` when you are running the server becatuse all the paths are by default relative)  
 
 # Configuration
 
-Note: `content/`, `assets/` and `config/` dont need to be used. You can have all in one folder or whatever. All the paths to all files are set in `rules` or `config.json` files. If you want to change the `config/config.json` file location. You need to change the `configPath` variable in `program/config.py`
+Note: `content/`, `assets/` and `config/` dont need to be used. You can have all in one folder or whatever. All the paths to all files are set in `rules` or `conf.json` files. If you want to change the `config/conf.json` file location. You need to change the `configPath` variable in `program/config.py`
 
 ## `content/`
 Contains all pure content files (for example the text on your home page)
