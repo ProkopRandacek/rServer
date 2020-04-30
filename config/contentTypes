@@ -6,3 +6,4 @@ txt  = text/plain
 xml  = text/xml
 ttf  = font/ttf
 png  = image/png
+zip  = application/zip

@@ -11,7 +11,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import ssl, os.path
+import ssl, os.path, math
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from log import log
 from config import c, rules, contentTypes
@@ -30,6 +30,7 @@ class S(BaseHTTPRequestHandler):
     def send(self, data, contentType):  # universal data sending function
         self.send_response(200)
         self.send_header("Content-type", contentType)
+        self.send_header("Content-Length", len(data))
         self.end_headers()
         self.wfile.write(data)
 
@@ -62,7 +63,6 @@ class S(BaseHTTPRequestHandler):
             if data.startswith("{usetemplate}"):
                 data = build(path, data)
             data = data.encode("utf-8")
-
         self.send(data, header)
 
     def do_POST(self):
